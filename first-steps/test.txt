@@ -1,0 +1,104 @@
+
+gudrb33333.log
+
+로그인
+gudrb33333.log
+
+로그인
+Elixir(엘릭서)? Erlang(얼랭)?
+gudrb33333·2022년 5월 13일
+
+2
+Erlangelixir얼랭엘릭서함수형 프로그래밍
+Elixir(엘릭서) 알아보기
+목록 보기
+1/2
+
+
+
+프로그래밍 언어들을 비교할때 언어적 성능을 먼저 비교하고는 합니다.
+
+사실 Erlang/Elixir의 언어적 성능은 c, Java에 비해 뛰어나지 않습니다.
+
+현재 사내에서 Elixir의 오픈소스를 이용하여 프로젝트를 진행하고 있습니다.
+언어적 성능이 뛰어나지도,, 언어 생태계 자체도 크지 않은 Elixir를 이용하여 어플리케이션을 구축하였을까,,하는 궁금증이 생겨 이런저런 조사를 하던 중
+
+다음의 글들을 발견하면서 어떻게..?🤔 라는 호기심이 생기게 됐습니다.
+
+그렇다면...
+왜 Elixir를 써야할까???
+수백만분의 일초의 리스펀스 타임
+(https://medium.com/pinterest-engineering/introducing-new-open-source-tools-for-the-elixir-community-2f7bb0bb7d8c)
+
+피닉스에서 200만 웹 소켓 연결로 가는 길(https://www.phoenixframework.org/blog/the-road-to-2-million-websocket-connections) *피닉스-Elixir 웹 프레임워크
+
+그렇다면 Elixir는 어떤 언어일까...
+
+Elixir는 José Valim이 개발한 고성능 분산 Erlang VM에서 돌아가는 함수형 프로그래밍 언어입니다.
+먼저 Elixir 창시자인 José Valim의 연설을 읽어 보시면 Elixir가 어떤 이유에서 개발했는지 이해할 수 있습니다.
+
+“창시자가 말하는 엘릭서 언어의 탄생”- José Valim
+(https://m.hanbit.co.kr/channel/category/category_view.html?cms_code=CMS7678783507)
+
+
+Elixir는 Erlang VM머신인 BEAM에서 돌아갑니다. 따라서 엘릭서 컴파일러는 소스코드를 Erlang VM 바이트 코드로 컴파일합니다.
+Erlang은...
+Ericsson사에서 여러 대형 통신 시스템에서 사용하기위해 개발되었는데,
+
+Erlang을 만든 Joe Armstrong은 Ericsson에서 높은 동시 접속처리와 고가용성을 갖는 전화 교환 장비를 위해 프로세스 간 간섭이나 충돌 없이 안전하게 동작할 수 있는 아키텍처를 연구했습니다.
+
+이를 위해 프롤로그의 선언적 방식과 스몰토크 방식의 메시징 방식을 활용하려고 하였고, Erlang이 함수형 프로그래밍언어가 된것도 그 문제를 해결하는데 함수형 접근 방식이 잘 맞아서라고 합니다.
+
+Erlang은 다음과 같은 애플리케이션에 특히 적합합니다.
+분산되고 안정적인 소프트 실시간 동시 시스템.
+
+통신 시스템(예: 스위치 제어 또는 프로토콜 변환).
+메일 전송 에이전트, IMAP-4 서버, HTTP 서버 또는 WAP 스택 과 같은 인터넷 애플리케이션용 서버 .
+통신 애플리케이션(예: 모바일 네트워크에서 이동성 처리 또는 통합 메시징 제공).
+부드러운 실시간 동작이 필요한 데이터베이스 애플리케이션.
+위와같은 특징을 보면 잘 이해가 되지 않는데, Erlang을 도입한
+회사 중 눈에 띄는 회사를 보시면
+
+페이스북 (페이스북 채팅 백엔드)
+RabbitMQ ( AMQP 엔터프라이즈 메시징)
+Whatsapp (스마트폰용 메시징)
+
+처럼 메시지,통신에 특화된 애플리케이션에 적합하다는 느낌을 받을 수 있습니다.
+
+또한 Erlang 공식홈페이지에서 보면 다음과 같은 눈에띄는 특징이 있습니다.
+
+
+
+동시성과 메시지 전달은 언어의 기본입니다. Erlang으로 작성된 애플리케이션은 종종 수백 또는 수천 개의 경량 프로세스로 구성됩니다. Erlang 프로세스 간의 컨텍스트 전환은 일반적으로 C 프로그램의 스레드 간 전환보다 1-2배 저렴합니다.
+(프로세스에서 스레드간 문맥전환 설명 추가해야함
+ex) 운영체제 프로세스에다가 스레드까지 하면 수천개가 동시에 돌아가는데,
+이때 줄을 세워서 관리하는데 cpu를 분할해서 사용하는데(시분할)
+연산이 금방되기 때문에 전환이 매우 빨라서 우리 인간은 이게 동시에 같이 작동하는것처럼 착시가 일어남
+)
+
+정리해보면..
+Erlang으로 작성된 애플리케이션은 통신,메시징과 관련된 서버에 강점이 있고 서로 메시지를 주고 받는 수백,수천개의 경량 프로세스로 돌아간다고 할 수 있습니다.
+Elixir 창시자인 José Valim은 이러한 Erlang에 특징에서 메타프로그래밍, 다형성, 프로덕션 환경에서 사용할 수 있는 툴과 같이 일상적으로 사용하는 기능에 대한 지원을 추가하여 Elixir를 만들었습니다.
+
+José Valim은 Ruby On Rails의 코어 팀 멤버였습니다. 건강 상의 문제로 쉬던중 Erlang에 빠지게 되었고, Erlang의 동시성 기반위에 훌륭한 개발 도구, 높은 생산성과 코딩의 즐거움으로 유명했던 루비 언어의 장점을 얹은 Elixir를 개발하게 되었다고 합니다. 그래서 Elixir는 Ruby와 비슷한점이 많습니다.
+
+혹시 Elixir에 대해서 더 궁금증이 생기신다면,,
+다음 글에서는 Elixir의 핵심인 동시성 프로그래밍에 대해서 알아보겠습니다.
+
+<참고>
+
+도서 -『처음 배우는 엘릭서 프로그래밍』
+Erlang 공식문서 (https://www.erlang.org/faq/introduction.html)
+“창시자가 말하는 엘릭서 언어의 탄생”(https://m.hanbit.co.kr/channel/category/category_view.html?cms_code=CMS7678783507)
+Ruby vs Elixir https://www.monterail.com/blog/ruby-vs-elixir
+수백만분의 일초의 리스펀스 타임(https://medium.com/pinterest-engineering/introducing-new-open-source-tools-for-the-elixir-community-2f7bb0bb7d8c)
+2백만개의 웹소켓 하나의 서버에 연결하기(https://www.phoenixframework.org/blog/the-road-to-2-million-websocket-connections)
+profile
+에단(손형규)
+asdasdasdasd
+다음 포스트
+Elixir(엘릭서) 동시성 프로그래밍 - 1. 경량 프로세스
+0개의 댓글
+댓글을 작성하세요
+댓글 작성
+Powered by GraphCDN, the GraphQL CDN
