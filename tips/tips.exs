@@ -36,11 +36,3 @@ sum.(1, 2, 3)
 pair_tuple_to_list = fn {a, b} -> [a, b] end
 pair_tuple_to_list.({1234, 5678})
 # => [ 1234, 5678 ]
-
-# 외부 함수의 에러 처리를, 함수 내부에서 처리
-handle_open = fn
-  {:ok, file} -> "Read data: #{IO.read(file, :line)}"
-  # :ok를 제외한 모든 경우에 대해, 에러 처리 (_)
-  # :file - erlang module, :format_error - erlang function
-  {_, error} -> "Error: #{:file.format_error(error)}"
-end

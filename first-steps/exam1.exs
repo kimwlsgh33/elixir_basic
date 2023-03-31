@@ -10,9 +10,9 @@ IO.puts(result)
 
 # rem(a,b) # remaninder
 
-exam2 = fn n ->
-  exam1.(rem(n, 3), rem(n, 5), n)
-end
+# exam2 = fn n ->
+#   exam1.(rem(n, 3), rem(n, 5), n)
+# end
 
 # 11 => 2,1,11
 
